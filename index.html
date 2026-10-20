@@ -62,6 +62,24 @@ h1,h2,h3,p{margin:0}
 .wrap{max-width:1240px;margin:0 auto;padding-left:24px;padding-right:24px}
 section[id]{scroll-margin-top:72px}
 
+.slide.show.cur .phone{cursor:zoom-in}
+.zoomable{cursor:zoom-in}
+.lb{position:fixed;inset:0;z-index:100;background:rgba(11,11,11,.9);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .25s ease}
+.lb[hidden]{display:none}
+.lb.open{opacity:1}
+.lb-stage{display:flex;flex-direction:column;align-items:center;gap:14px;padding:56px 16px 24px;max-width:100%;max-height:100%}
+.lb img{max-width:min(94vw,1500px);max-height:calc(100vh - 130px);width:auto;height:auto;object-fit:contain;border-radius:18px;background:#fff;box-shadow:0 30px 80px rgba(0,0,0,.5);transform:scale(.94);transition:transform .3s var(--ease)}
+.lb.open img{transform:none}
+.lb img.swap{animation:pop .3s ease both}
+.lb-cap{color:#e8e8e8;font-size:15px;text-align:center}
+.lb-x,.lb-nav{position:absolute;border:1.5px solid rgba(255,255,255,.7);background:rgba(11,11,11,.5);color:#fff;border-radius:50%;width:48px;height:48px;padding:0;display:flex;align-items:center;justify-content:center;line-height:0;cursor:pointer;transition:background .25s,transform .15s}
+.lb-x:hover,.lb-nav:hover{background:rgba(255,255,255,.2)}
+.lb-x{top:14px;right:14px}
+.lb-nav{top:50%;margin-top:-24px}
+.lb-nav.prev{left:14px}
+.lb-nav.next{right:14px}
+.lb-nav[hidden]{display:none}
+@media (max-width:700px){.lb-nav{top:auto;bottom:16px;margin:0}.lb-nav.prev{left:16px}.lb-nav.next{right:16px}.lb img{max-height:calc(100vh - 170px)}}
 /* motion */
 @keyframes rise{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
 @keyframes pop{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
@@ -455,6 +473,13 @@ footer .data{max-width:1240px;margin:0 auto 18px;font-size:13px;line-height:1.6;
 <div class="links"><span class="note" id="regNote">Demo amounts in INR</span><a href="privacy.html">Privacy policy</a></div>
 </div>
 </footer>
+
+<div class="lb" id="lb" hidden role="dialog" aria-modal="true" aria-label="Screen preview">
+<button type="button" class="lb-x" aria-label="Close preview"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+<button type="button" class="lb-nav prev" id="lbPrev" aria-label="Previous screen"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+<div class="lb-stage"><img id="lbImg" alt=""><div class="lb-cap" id="lbCap"></div></div>
+<button type="button" class="lb-nav next" id="lbNext" aria-label="Next screen"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+</div>
 
 <script src="site.js" defer></script>
 </body>
