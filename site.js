@@ -1,4 +1,4 @@
-/* Money SpendOptic home page: carousel, hero tilt, count-up, questions, computer-view demo, region.
+/* Money SpendOptic home page: carousel, hero tilt, count-up, questions, computer-view demo.
    Plain JS, no framework. Spec: docs/website-design/WEBSITE_SPEC.md */
 (function () {
   'use strict';
@@ -149,7 +149,7 @@
     desk = on;
     lock.hidden = on; deskView.hidden = !on;
     if (!on) resetLock();
-    top.textContent = on ? 'Disconnect and lock' : 'Code: 027512';
+    top.textContent = on ? 'Disconnect and lock' : 'Code: 696399';
     st.textContent = on ? 'Connected' : 'Locked · waiting for the code';
     hint.textContent = on
       ? 'Connected. It works like the real thing: search, filter, open Add. Disconnect locks it again.'
@@ -168,7 +168,7 @@
     busy = true; go1.textContent = 'Checking…';
     setTimeout(function () {
       busy = false;
-      if (code.value === '027512') {
+      if (code.value === '696399') {
         ok = true; code.className = 'good'; err.textContent = ''; go1.textContent = 'Connected'; done.hidden = false;
       } else {
         tries++; code.className = 'bad'; go1.textContent = 'Connect';
@@ -180,27 +180,6 @@
   top.addEventListener('click', function () { setDesk(false); });
   $('#deskOut').addEventListener('click', function () { setDesk(false); });
   sizeScreen();
-
-  /* ---------- Region: hero salary card follows the visitor ---------- */
-  var REG = { IN: ['INR', 1, 'en-IN'], US: ['USD', 0.1, 'en-US'], GB: ['GBP', 0.08, 'en-GB'], DE: ['EUR', 0.09, 'de-DE'], FR: ['EUR', 0.09, 'fr-FR'], ES: ['EUR', 0.09, 'es-ES'], IT: ['EUR', 0.09, 'it-IT'], NL: ['EUR', 0.09, 'nl-NL'], IE: ['EUR', 0.09, 'en-IE'], AE: ['AED', 0.35, 'en-AE'], SA: ['SAR', 0.35, 'en-SA'], SG: ['SGD', 0.13, 'en-SG'], AU: ['AUD', 0.15, 'en-AU'], CA: ['CAD', 0.14, 'en-CA'], JP: ['JPY', 1.5, 'ja-JP'], BR: ['BRL', 0.5, 'pt-BR'], ZA: ['ZAR', 1.6, 'en-ZA'], PK: ['PKR', 2.5, 'en-PK'], BD: ['BDT', 1.2, 'en-BD'], NP: ['NPR', 1.6, 'en-NP'], LK: ['LKR', 3.5, 'en-LK'], PH: ['PHP', 5, 'en-PH'], ID: ['IDR', 1500, 'id-ID'], MY: ['MYR', 0.5, 'en-MY'], NG: ['NGN', 80, 'en-NG'], KE: ['KES', 13, 'en-KE'] };
-  var TZ = { Kolkata: 'IN', Calcutta: 'IN', London: 'GB', Dubai: 'AE', Riyadh: 'SA', Singapore: 'SG', Tokyo: 'JP', Karachi: 'PK', Dhaka: 'BD', Kathmandu: 'NP', Colombo: 'LK', Manila: 'PH', Jakarta: 'ID', Lagos: 'NG', Nairobi: 'KE', Johannesburg: 'ZA', Berlin: 'DE', Paris: 'FR', Madrid: 'ES', Rome: 'IT', Amsterdam: 'NL', Dublin: 'IE', Toronto: 'CA', Sao_Paulo: 'BR', Kuala_Lumpur: 'MY' };
-  try {
-    var loc = (navigator.languages && navigator.languages[0]) || navigator.language || 'en-US', tz = '';
-    try { tz = Intl.DateTimeFormat().resolvedOptions().timeZone || ''; } catch (e1) {}
-    var parts = loc.split('-');
-    var cc = (parts.length > 1 ? parts[parts.length - 1] : '').toUpperCase();
-    if (!REG[cc]) {
-      cc = TZ[tz.split('/').pop()] || (tz.indexOf('Australia/') === 0 ? 'AU' : tz.indexOf('America/') === 0 ? 'US' : '');
-    }
-    var r = REG[cc], cur2 = r ? r[0] : null, f = r ? r[1] : 0.1;
-    var dec = (cur2 === 'JPY' || cur2 === 'IDR') ? 0 : 2;
-    var opts = { minimumFractionDigits: dec, maximumFractionDigits: dec };
-    if (cur2) { opts.style = 'currency'; opts.currency = cur2; }
-    var txt;
-    try { txt = new Intl.NumberFormat(loc, opts).format(62400 * f); } catch (e2) { txt = new Intl.NumberFormat('en-US', opts).format(62400 * f); }
-    $('#sal').textContent = '+ ' + txt;
-    $('#regNote').textContent = cur2 ? 'Demo amounts in ' + cur2 : 'Demo amounts without a currency';
-  } catch (e) { /* keep the INR text from the HTML */ }
 
   window.addEventListener('pagehide', function () { clearInterval(timer); if (typeof raf !== 'undefined') cancelAnimationFrame(raf); });
 })();
