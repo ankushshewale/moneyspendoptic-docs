@@ -4,36 +4,131 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Money SpendOptic: Privacy Policy</title>
+<meta name="description" content="How Money SpendOptic handles your data: your money data stays on your phone, and we run no server that collects it.">
+<link rel="canonical" href="https://www.moneyspendoptic.com/privacy.html">
+<meta name="theme-color" content="#FFFFFF">
+<link rel="icon" href="logo.png" type="image/png">
+<link rel="apple-touch-icon" href="logo.png">
+<link rel="preload" href="fonts/outfit-300.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/outfit-500.woff2" as="font" type="font/woff2" crossorigin>
 <style>
-  body { font-family: system-ui, sans-serif; line-height: 1.6; max-width: 720px; margin: 0 auto; padding: 24px 16px; color: #1c1b1f; }
-  h1 { font-size: 1.6rem; } h2 { font-size: 1.15rem; margin-top: 2rem; }
-  a { color: #1a5fd0; }
+@font-face{font-family:'Outfit';font-weight:300;font-style:normal;font-display:swap;src:url(fonts/outfit-300.woff2) format('woff2')}
+@font-face{font-family:'Outfit';font-weight:400;font-style:normal;font-display:swap;src:url(fonts/outfit-400.woff2) format('woff2')}
+@font-face{font-family:'Outfit';font-weight:500;font-style:normal;font-display:swap;src:url(fonts/outfit-500.woff2) format('woff2')}
+@font-face{font-family:'Outfit';font-weight:600 700;font-style:normal;font-display:swap;src:url(fonts/outfit-600.woff2) format('woff2')}
+:root{--ink:#0B0B0B;--text:#555;--muted:#6B6B6B;--line:#E0E0E0;--line2:#EDEDED;--ease:cubic-bezier(.2,.7,.2,1)}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:#fff;color:var(--ink);font-family:Outfit,system-ui,sans-serif;font-weight:300;overflow-x:clip}
+a{color:inherit}
+h1,h2,p,ul{margin:0}
+:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.skip{position:absolute;left:-9999px;top:8px;z-index:50;background:var(--ink);color:#fff;padding:12px 18px;border-radius:12px;text-decoration:none}
+.skip:focus{left:8px}
+.wrap{max-width:1240px;margin:0 auto;padding-left:24px;padding-right:24px}
+@keyframes rise{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
+.rise{animation:rise .9s var(--ease) both}
+.rise-2{animation:rise .9s var(--ease) .15s both}
+.btn{transition:transform .15s,background .25s,color .25s;cursor:pointer}
+.btn:hover{transform:translateY(-2px)}
+.btn:active{transform:scale(.96)}
+header.top{position:sticky;top:0;z-index:30;background:rgba(255,255,255,.86);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-bottom:1px solid var(--line2)}
+header.top .wrap{padding-top:12px;padding-bottom:11px;display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;min-height:44px}
+.brand img{width:38px;height:38px;border-radius:11px}
+.brand span{font-size:18px;font-weight:600}
+nav.main{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;font-size:15px}
+nav.main a{text-decoration:none;min-height:44px;display:inline-flex;align-items:center;padding:0 6px}
+nav.main a.dl{background:var(--ink);color:#fff;padding:0 20px;border-radius:999px;font-weight:500}
+.label{font-size:12px;letter-spacing:.24em;color:var(--muted);text-transform:uppercase}
+.phead{padding-top:72px;padding-bottom:48px;display:flex;flex-direction:column;gap:20px;border-bottom:1px solid var(--line2)}
+h1{font-weight:500;letter-spacing:-.035em;font-size:clamp(44px,6.4vw,92px);line-height:.98}
+h1 span{font-weight:300}
+.badge{align-self:start;display:flex;align-items:center;gap:10px;border:1px solid var(--line);border-radius:999px;padding:8px 16px;font-size:14px}
+.badge i{width:8px;height:8px;border-radius:50%;background:var(--ink)}
+.lead{font-size:20px;line-height:1.55;color:var(--text);max-width:34em}
+.doc{display:flex;flex-wrap:wrap;gap:56px;padding-top:56px;padding-bottom:96px;align-items:flex-start}
+.toc{flex:0 0 260px;position:sticky;top:88px;display:flex;flex-direction:column;gap:2px;font-size:15px}
+.toc .label{margin-bottom:10px}
+.toc a{text-decoration:none;color:var(--text);padding:8px 14px;border-radius:12px;min-height:40px;display:flex;align-items:center;transition:background .25s,color .25s}
+.toc a:hover{background:#F3F3F3;color:var(--ink)}
+.toc a.on{background:var(--ink);color:#fff}
+article{flex:1 1 520px;min-width:0;max-width:760px;display:flex;flex-direction:column;gap:18px;font-size:17px;line-height:1.7;color:var(--text)}
+article h2{font-weight:500;letter-spacing:-.02em;font-size:clamp(26px,3vw,34px);line-height:1.1;color:var(--ink);margin-top:32px;padding-top:32px;border-top:1px solid var(--line2);scroll-margin-top:88px}
+article h2:first-child{margin-top:0;padding-top:0;border-top:0}
+article b{font-weight:500;color:var(--ink)}
+article ul{padding-left:0;list-style:none;display:flex;flex-direction:column;gap:10px}
+article li{padding:16px 20px;border:1px solid var(--line2);border-radius:18px}
+article a{color:var(--ink);text-underline-offset:3px}
+code{font-family:ui-monospace,Menlo,monospace;font-size:.9em;background:#F3F3F3;border-radius:6px;padding:2px 6px;color:var(--ink)}
+footer.foot{border-top:1px solid var(--line2);padding:28px 24px;font-size:14px;color:var(--text)}
+footer .row{max-width:1240px;margin:0 auto;display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;align-items:center}
+footer .own{display:flex;align-items:center;gap:10px}
+footer .own img{width:28px;height:28px;border-radius:8px}
+footer .links{display:flex;flex-wrap:wrap;gap:6px 22px;align-items:center}
+footer .links a{min-height:44px;display:inline-flex;align-items:center}
+@media (max-width:900px){.toc{display:none}.doc{gap:0}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}}
 </style>
 </head>
 <body>
-<p><a href="/">&larr; Money SpendOptic home</a></p>
-<h1>Money SpendOptic: Privacy Policy</h1>
-<p>Last updated: 20 October 2026</p>
+<a class="skip" href="#policy">Skip to content</a>
 
-<p>Money SpendOptic is a money-manager app for Android. This page explains what the app does with your data.
-The short version: your money data stays on your phone, and we do not run a server that collects it.</p>
+<header class="top">
+<div class="wrap">
+<a href="/" class="brand"><img src="logo.png" alt="" width="38" height="38"><span>Money SpendOptic</span></a>
+<nav class="main" aria-label="Main">
+<a href="/#features">Features</a>
+<a href="/#screens">Screens</a>
+<a href="/#help">Computer view</a>
+<a href="/" class="dl btn">Home</a>
+</nav>
+</div>
+</header>
 
-<h2>Data stored on your phone</h2>
+<main>
+<section class="wrap phead">
+<div class="badge rise"><i></i>Last updated: 20 October 2026</div>
+<h1 class="rise-2">Privacy <span>policy</span></h1>
+<p class="lead rise-2">Money SpendOptic is a money-manager app for Android. This page explains what the app does with your data. The short version: your money data stays on your phone, and we do not run a server that collects it.</p>
+</section>
+
+<div class="wrap doc">
+<nav class="toc" aria-label="On this page">
+<div class="label">On this page</div>
+<a href="#data-stored-on-your-phone">Data stored on your phone</a>
+<a href="#backups">Backups</a>
+<a href="#computer-page-optional">Computer page (optional)</a>
+<a href="#other-permissions">Other permissions</a>
+<a href="#ads">Ads</a>
+<a href="#premium-and-payments-google-play-billing">Premium and payments (Google Play Billing)</a>
+<a href="#google-play-services">Google Play services</a>
+<a href="#analytics-and-messages-firebase">Analytics and messages (Firebase)</a>
+<a href="#consent-eea-uk-and-switzerland">Consent (EEA, UK and Switzerland)</a>
+<a href="#children">Children</a>
+<a href="#sharing-and-selling">Sharing and selling</a>
+<a href="#your-choices-and-deletion">Your choices and deletion</a>
+<a href="#this-website-and-fonts">This website and fonts</a>
+<a href="#changes">Changes</a>
+<a href="#contact">Contact</a>
+</nav>
+<article id="policy">
+<h2 id="data-stored-on-your-phone">Data stored on your phone</h2>
 <p>Your accounts, transactions, categories, notes, photos you attach and settings are saved only on your device.
 We never receive them. Uninstalling the app, or clearing its storage, deletes them.</p>
 
-<h2>Backups</h2>
+<h2 id="backups">Backups</h2>
 <p>You can save a backup file on your phone. If you choose Google Drive, the backup is sent to your own Google Drive
 account using your Google sign-in. It is stored in your Drive, not on our servers, and we cannot read it.</p>
 <p>The app asks Google for one permission only: the <code>drive.file</code> scope. It lets the app see only the backup files
 it created itself, and nothing else in your Drive. You can remove this access at any time in your Google Account
 (Security › Third-party access) or by signing out in the app.</p>
 
-<h2>Computer page (optional)</h2>
+<h2 id="computer-page-optional">Computer page (optional)</h2>
 <p>If you turn on the computer page, your phone shows its data to a browser on the same Wi-Fi network.
 The data goes directly between your phone and your computer. It does not pass through the internet or our servers.</p>
 
-<h2>Other permissions</h2>
+<h2 id="other-permissions">Other permissions</h2>
 <ul>
   <li><b>Notifications</b>: for reminders you set.</li>
   <li><b>Internet and network state</b>: for the Google Drive backup, ads, analytics, notifications, Premium and app updates, and for the optional computer page on your Wi-Fi.</li>
@@ -41,23 +136,23 @@ The data goes directly between your phone and your computer. It does not pass th
   <li><b>Biometric / screen lock</b>: to lock the app, if you turn that on. The app never sees your fingerprint or face data.</li>
 </ul>
 
-<h2>Ads</h2>
+<h2 id="ads">Ads</h2>
 <p>The app shows ads using Google AdMob. AdMob may collect and use your device's advertising ID, IP address and
 similar device information to show and measure ads. See
 <a href="https://policies.google.com/technologies/partner-sites">how Google uses information from sites or apps that use its services</a>.
 You can reset or delete your advertising ID in Android settings (Settings → Privacy → Ads).</p>
 
-<h2>Premium and payments (Google Play Billing)</h2>
+<h2 id="premium-and-payments-google-play-billing">Premium and payments (Google Play Billing)</h2>
 <p>Premium is bought through Google Play Billing. Google handles the payment: we never see or store your card or
 payment details. Google tells the app whether your purchase or subscription is active, and the app keeps that status
 on your phone. Your purchases are also covered by
 <a href="https://policies.google.com/privacy">Google's Privacy Policy</a> and the Google Play terms.</p>
 
-<h2>Google Play services</h2>
+<h2 id="google-play-services">Google Play services</h2>
 <p>The app uses Google Play to ask for a store review and to check for and install app updates. Google may process
 device and usage information to do this, under its own privacy policy.</p>
 
-<h2>Analytics and messages (Firebase)</h2>
+<h2 id="analytics-and-messages-firebase">Analytics and messages (Firebase)</h2>
 <p>The app uses Google Firebase Analytics to count how the app is used, for example which features are opened.
 It does not send your transactions, amounts, account names or notes. Firebase may collect an app instance ID and
 device information such as model, Android version, country and language. In the EEA, the UK and Switzerland,
@@ -66,31 +161,50 @@ analytics starts only after you agree in the consent form.</p>
 Settings › Tips and news. See
 <a href="https://firebase.google.com/support/privacy">Firebase privacy information</a>.</p>
 
-<h2>Consent (EEA, UK and Switzerland)</h2>
+<h2 id="consent-eea-uk-and-switzerland">Consent (EEA, UK and Switzerland)</h2>
 <p>If you are in the European Economic Area, the UK or Switzerland, the app asks for your consent before showing
 personalised ads. You can change your choice later in Settings › Privacy choices.</p>
 
-<h2>Children</h2>
+<h2 id="children">Children</h2>
 <p>The app is not directed at children under 13, and we do not knowingly collect their data.</p>
 
-<h2>Sharing and selling</h2>
+<h2 id="sharing-and-selling">Sharing and selling</h2>
 <p>We do not sell your data. Apart from AdMob ads, Firebase, Google Play (Billing, reviews and updates) and the Google Drive backup you choose (all described above),
 the app shares nothing with third parties.</p>
 
-<h2>Your choices and deletion</h2>
+<h2 id="your-choices-and-deletion">Your choices and deletion</h2>
 <p>Because your data is only on your phone (and your own Drive backup, if you made one), you control it:
 delete transactions in the app, clear the app's storage, uninstall it, or delete the backup file from your Drive.</p>
 
-<h2>This website and fonts</h2>
+<h2 id="this-website-and-fonts">This website and fonts</h2>
 <p>This website sets no cookies, has no analytics and loads no third-party scripts or fonts. To show example amounts in your
 currency, a small script on the page reads your browser's language and time zone; this stays in your browser and is never sent anywhere.
 The Outfit font, also used in the app, is served from this site under the SIL Open Font License (licence text: <a href="fonts/OFL.txt">fonts/OFL.txt</a>).
 Instrument Serif, used only in the app, is under the same licence.</p>
 
-<h2>Changes</h2>
+<h2 id="changes">Changes</h2>
 <p>If this policy changes, the date at the top will be updated.</p>
 
-<h2>Contact</h2>
+<h2 id="contact">Contact</h2>
 <p>Questions: <a href="mailto:moneyspendoptic@gmail.com">moneyspendoptic@gmail.com</a></p>
+</article>
+</div>
+</main>
+
+<footer class="foot">
+<div class="row">
+<div class="own"><img src="logo.png" alt="" width="28" height="28">© 2026 Money SpendOptic</div>
+<div class="links"><a href="mailto:moneyspendoptic@gmail.com">Contact us</a><a href="privacy.html">Privacy policy</a></div>
+</div>
+</footer>
+
+<script>
+(function(){
+  var links=[].slice.call(document.querySelectorAll('.toc a')),hs=links.map(function(a){return document.getElementById(a.getAttribute('href').slice(1))});
+  if(!('IntersectionObserver' in window))return;
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){links.forEach(function(a){a.classList.toggle('on',a.getAttribute('href')==='#'+e.target.id)})}})},{rootMargin:'-90px 0px -70% 0px'});
+  hs.forEach(function(h){h&&io.observe(h)});
+})();
+</script>
 </body>
 </html>
