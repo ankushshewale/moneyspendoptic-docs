@@ -14,8 +14,13 @@
     ['Add several', 'One account, many rows: enter a whole bill or a trip in one go.'],
     ['Tags', 'Tag entries across categories - a trip, a person, a project - and find them again.'],
     ['Repeat and installments', 'Rent, EMIs and subscriptions add themselves, and you see what’s coming up next.'],
+    ['Installments', 'Split a big buy into parts: see how many are paid and when the next one is due.'],
     ['Budgets', 'A limit per category with clear over and under bars.'],
     ['Accounts and cards', 'Groups, balances that add up, card statements and transfers.'],
+    ['Card statements', 'Each card has its own statements: limit, billed and unpaid, and pay by the due date.'],
+    ['Accounts and groups', 'Cash, bank, cards and more in groups: add, hide, reorder and edit.'],
+    ['Categories', 'Categories with subcategories for expense and income, and your own to add.'],
+    ['Notes', 'Memos for any day, like a shopping list or a trip plan, as coloured notes you can pin.'],
     ['Search and filters', 'Search your notes; filter by type, account, category, amount and period.'],
     ['Backup and privacy', 'Backup file, your own Google Drive, Excel import - your data stays yours.']
   ];
