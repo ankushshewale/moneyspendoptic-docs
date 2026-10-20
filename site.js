@@ -13,7 +13,7 @@
     ['Notes that fill themselves', 'Start typing a note and pick a past entry - category and account fill in for you.'],
     ['Add several', 'One account, many rows: enter a whole bill or a trip in one go.'],
     ['Tags', 'Tag entries across categories - a trip, a person, a project - and find them again.'],
-    ['Repeat and installments', 'Rent, EMIs and subscriptions add themselves, and you see what’s coming up next.'],
+    ['Repeat', 'Rent, subscriptions and salary add themselves on schedule, and you see what’s coming up next.'],
     ['Installments', 'Split a big buy into parts: see how many are paid and when the next one is due.'],
     ['Budgets', 'A limit per category with clear over and under bars.'],
     ['Accounts and cards', 'Groups, balances that add up, card statements and transfers.'],
