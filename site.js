@@ -10,14 +10,14 @@
   var FEAT = [
     ['Daily transactions', 'Every entry by day, with the month’s income, expense and total on top.'],
     ['Insights', 'Spending by category, a six-month trend and compare with last month.'],
-    ['Notes that fill themselves', 'Start typing a note and pick a past entry — category and account fill in for you.'],
+    ['Notes that fill themselves', 'Start typing a note and pick a past entry - category and account fill in for you.'],
     ['Add several', 'One account, many rows: enter a whole bill or a trip in one go.'],
-    ['Tags', 'Tag entries across categories — a trip, a person, a project — and find them again.'],
+    ['Tags', 'Tag entries across categories - a trip, a person, a project - and find them again.'],
     ['Repeat and installments', 'Rent, EMIs and subscriptions add themselves, and you see what’s coming up next.'],
     ['Budgets', 'A limit per category with clear over and under bars.'],
     ['Accounts and cards', 'Groups, balances that add up, card statements and transfers.'],
     ['Search and filters', 'Search your notes; filter by type, account, category, amount and period.'],
-    ['Backup and privacy', 'Backup file, your own Google Drive, Excel import — your data stays yours.']
+    ['Backup and privacy', 'Backup file, your own Google Drive, Excel import - your data stays yours.']
   ];
   var N = FEAT.length;
   var slides = $$('#stage .slide');
@@ -139,7 +139,7 @@
     desk = on;
     lock.hidden = on; deskView.hidden = !on;
     if (!on) resetLock();
-    top.textContent = on ? 'Disconnect and lock' : 'Code: 482915';
+    top.textContent = on ? 'Disconnect and lock' : 'Code: 027512';
     st.textContent = on ? 'Connected' : 'Locked · waiting for the code';
     hint.textContent = on
       ? 'Connected. It works like the real thing: search, filter, open Add. Disconnect locks it again.'
@@ -158,7 +158,7 @@
     busy = true; go1.textContent = 'Checking…';
     setTimeout(function () {
       busy = false;
-      if (code.value === '482915') {
+      if (code.value === '027512') {
         ok = true; code.className = 'good'; err.textContent = ''; go1.textContent = 'Connected'; done.hidden = false;
       } else {
         tries++; code.className = 'bad'; go1.textContent = 'Connect';
