@@ -88,14 +88,24 @@
 
   /* ---------- Count-up facts ---------- */
   var nums = $$('.facts b');
-  if (!reduce) {
-    nums.forEach(function (b) { b.textContent = '0'; });
+  function countUp() {
     var t0 = performance.now();
-    var raf = requestAnimationFrame(function step(now) {
-      var p = Math.min((now - t0) / 1400, 1), e = 1 - Math.pow(1 - p, 3);
+    requestAnimationFrame(function step(now) {
+      var p = Math.min((now - t0) / 1600, 1), e = 1 - Math.pow(1 - p, 3);
       nums.forEach(function (b) { b.textContent = String(Math.round(+b.dataset.n * e)); });
-      if (p < 1) raf = requestAnimationFrame(step);
+      if (p < 1) requestAnimationFrame(step);
     });
+  }
+  if (!reduce && nums.length) {
+    nums.forEach(function (b) { b.textContent = '0'; });
+    var facts = $('.facts');
+    if ('IntersectionObserver' in window && facts) {
+      // start when the numbers scroll into view, so the visitor sees them count
+      var seen = new IntersectionObserver(function (es) {
+        if (es[0].isIntersecting) { seen.disconnect(); countUp(); }
+      }, { threshold: 0.35 });
+      seen.observe(facts);
+    } else countUp();
   }
 
   /* ---------- Questions: one open at a time ---------- */
