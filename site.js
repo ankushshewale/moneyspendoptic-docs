@@ -205,7 +205,7 @@
 
   function sizeScreen() {
     var w = screen.clientWidth;
-    var h = desk ? w * 900 / 1280 : (w <= 560 ? 420 : w * 760 / 1280);
+    var h = desk ? w * 900 / 1280 : (w <= 560 ? 660 : w * 1010 / 1280);
     screen.style.height = Math.round(h) + 'px';
   }
   if (window.ResizeObserver) new ResizeObserver(sizeScreen).observe(screen);
