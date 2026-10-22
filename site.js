@@ -220,7 +220,7 @@
     desk = on;
     lock.hidden = on; deskView.hidden = !on;
     if (!on) resetLock();
-    top.textContent = on ? 'Disconnect and lock' : 'Code: 696399';
+    top.textContent = on ? 'Disconnect and lock' : 'Copy code: 696399';
     st.textContent = on ? 'Connected' : 'Locked · waiting for the code';
     hint.textContent = on
       ? 'Connected. It works like the real thing: search, filter, open Add. Disconnect locks it again.'
@@ -248,7 +248,16 @@
     }, 600);
   });
   done.addEventListener('click', function () { setDesk(true); });
-  top.addEventListener('click', function () { setDesk(false); });
+  var topTimer;
+  top.addEventListener('click', function () {
+    if (desk) { setDesk(false); return; }
+    // Locked: copy the demo code, put it in the box too, and say so for a moment.
+    try { if (navigator.clipboard) navigator.clipboard.writeText('696399').catch(function () {}); } catch (e) { /* the box below still gets the code */ }
+    code.value = '696399'; err.textContent = ''; code.className = ''; ok = false; done.hidden = true; go1.textContent = 'Connect';
+    top.textContent = 'Copied: 696399';
+    clearTimeout(topTimer);
+    topTimer = setTimeout(function () { if (!desk) top.textContent = 'Copy code: 696399'; }, 1800);
+  });
   $('#deskOut').addEventListener('click', function () { setDesk(false); });
   sizeScreen();
 
