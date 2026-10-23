@@ -11,7 +11,7 @@
     ['Daily transactions', 'Every entry by day, with the month’s income, expense and total on top.'],
     ['Insights', 'Spending by category, a six-month trend and compare with last month.'],
     ['Notes that fill themselves', 'Start typing a note and pick a past entry - category and account fill in for you.'],
-    ['Add several', 'One account, many rows: enter a whole bill or a trip in one go.'],
+    ['Add several', 'One account, many rows: enter a whole bill or a trip in one go. They show as one group you can name and rename.'],
     ['Tags', 'Tag entries across categories - a trip, a person, a project - and find them again.'],
     ['Repeat', 'Rent, subscriptions and salary add themselves on schedule, and you see what’s coming up next.'],
     ['Installments', 'Split a big buy into parts: see how many are paid and when the next one is due.'],
