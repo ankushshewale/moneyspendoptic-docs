@@ -16,7 +16,7 @@
     ['Repeat', 'Rent, subscriptions and salary add themselves on schedule, and you see what’s coming up next.'],
     ['Installments', 'Split a big buy into parts: see how many are paid and when the next one is due.'],
     ['Budgets', 'A limit per category with clear over and under bars.'],
-    ['Accounts and cards', 'Groups, balances that add up, a summary card on every account, card statements and transfers.'],
+    ['Accounts and cards', 'Groups, balances that add up, a summary card on every account, card statements, loans, investments and transfers.'],
     ['Card statements', 'Each card shows what you owe against its limit, every statement billed and unpaid, and a Pay card button by the due date.'],
     ['Accounts and groups', 'Cash, bank, cards and more in groups: add, hide, reorder and edit.'],
     ['Categories', 'Categories with subcategories for expense and income, and your own to add.'],
