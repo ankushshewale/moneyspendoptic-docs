@@ -19,7 +19,7 @@
     ['Accounts and cards', 'Groups, balances that add up, a summary card on every account, card statements, loans, investments and transfers.'],
     ['Card statements', 'Each card shows what you owe against its limit, every statement billed and unpaid, and a Pay card button by the due date.'],
     ['Accounts and groups', 'Cash, bank, cards and more in groups: add, hide, reorder and edit.'],
-    ['Categories', 'Categories with subcategories for expense and income, and your own to add.'],
+    ['Categories', 'Categories with subcategories for expense and income, each with its own icon to pick, and your own to add.'],
     ['Notes', 'Memos for any day, like a shopping list or a trip plan, as coloured notes you can pin.'],
     ['Search and filters', 'Search your notes; filter by type, account, category, amount and period.'],
     ['Backup and privacy', 'Backup file, your own Google Drive, Excel import - your data stays yours.']
