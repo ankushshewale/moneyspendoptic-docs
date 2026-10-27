@@ -22,7 +22,8 @@
     ['Categories', 'Categories with subcategories for expense and income, each with its own icon to pick, and your own to add.'],
     ['Notes', 'Memos for any day, like a shopping list or a trip plan, as coloured notes you can pin.'],
     ['Search and filters', 'Search notes and descriptions, with results under day headings and their notes; filter by type, account, category, amount and period.'],
-    ['Backup and privacy', 'Backup file, your own Google Drive, Excel import - your data stays yours.']
+    ['Backup and privacy', 'Backup file, your own Google Drive, Excel import - your data stays yours.'],
+    ['Reminders', 'A bell on the Trans tab lists what needs a look: card bills, overdue bills, loan EMIs, budgets and accounts that may run short for the payments coming. Switch on only the reminders you want, account by account.']
   ];
   var N = FEAT.length;
   var slides = $$('#stage .slide');
