@@ -17,7 +17,7 @@
     ['Installments', 'Split a big buy into parts: see how many are paid and when the next one is due.'],
     ['Budgets', 'A limit per category with clear over and under bars.'],
     ['Accounts and cards', 'Groups, balances that add up, a summary card on every account, card statements, loans, investments and transfers.'],
-    ['Card statements', 'Each card shows what you owe against its limit, every statement billed and unpaid, and a Pay card button by the due date. Add the card anniversary for an annual fee reminder and a fee-waiver spend tracker.'],
+    ['Card statements', 'Each card shows what you owe against its limit, every statement billed and unpaid, and a Mark paid button for when you have paid it. Add the card anniversary for an annual fee reminder and a fee-waiver spend tracker.'],
     ['Accounts and groups', 'Cash, bank, cards and more in groups: add, hide, reorder and edit.'],
     ['Categories', 'Categories with subcategories for expense and income, each with its own icon to pick, and your own to add.'],
     ['Notes', 'Memos for any day, like a shopping list or a trip plan, as coloured notes you can pin.'],
