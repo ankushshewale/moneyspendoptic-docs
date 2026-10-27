@@ -9,7 +9,7 @@
   /* ---------- Carousel + feature cards ---------- */
   var FEAT = [
     ['Daily transactions', 'Every entry by day, with the month’s income, expense and total on top.'],
-    ['Insights', 'Spending by category, a six-month trend and compare with last month.'],
+    ['Insights', 'Spending by category or month bars, a six-month trend and compare with last month.'],
     ['Notes that fill themselves', 'Start typing a note and pick a past entry - category and account fill in for you.'],
     ['Add several', 'One account, many rows: enter a whole bill or a trip in one go. They show as one group you can name and rename.'],
     ['Tags', 'Tag entries across categories - a trip, a person, a project - and find them again.'],
