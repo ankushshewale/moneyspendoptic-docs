@@ -1,4 +1,4 @@
-/* Money SpendOptic home page: carousel, hero tilt, count-up, questions, computer-view demo.
+/* Money SpendOptic home page: highlights gallery, hero tilt, count-up, questions, computer-view demo.
    Plain JS, no framework. Spec: docs/website-design/WEBSITE_SPEC.md */
 (function () {
   'use strict';
@@ -6,80 +6,9 @@
   var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  /* ---------- Carousel + feature cards ---------- */
-  var FEAT = [
-    ['Daily transactions', 'Every entry by day, with the month’s income, expense and total on top.'],
-    ['Insights', 'Spending by category or month bars, a six-month trend and compare with last month.'],
-    ['Notes that fill themselves', 'Start typing a note and pick a past entry - category and account fill in for you.'],
-    ['Add several', 'One account, many rows: enter a whole bill or a trip in one go. They show as one group you can name and rename.'],
-    ['Tags', 'Tag entries across categories - a trip, a person, a project - and find them again.'],
-    ['Repeat', 'Rent, subscriptions and salary add themselves on schedule, and you see what’s coming up next.'],
-    ['Installments', 'Split a big buy into parts: see how many are paid and when the next one is due.'],
-    ['Budgets', 'A limit per category with clear over and under bars.'],
-    ['Accounts and cards', 'Groups, balances that add up, a summary card on every account, card statements, loans, investments and transfers.'],
-    ['Card statements', 'Each card shows what you owe against its limit, every statement billed and unpaid, and a Mark paid button for when you have paid it. Add the card anniversary for an annual fee reminder and a fee-waiver spend tracker.'],
-    ['Accounts and groups', 'Cash, bank, cards and more in groups: add, hide, reorder and edit.'],
-    ['Categories', 'Categories with subcategories for expense and income, each with its own icon to pick, and your own to add.'],
-    ['Notes', 'Memos for any day, like a shopping list or a trip plan, as coloured notes you can pin.'],
-    ['Search and filters', 'Search notes and descriptions, with results under day headings and their notes; filter by type, account, category, amount and period.'],
-    ['Backup and privacy', 'Backup file, your own Google Drive, Excel import - your data stays yours.'],
-    ['Reminders', 'A bell on the Trans tab lists what needs a look: card bills, overdue bills, loan EMIs, budgets and accounts that may run short for the payments coming. Switch on only the reminders you want, account by account.'],
-    ['Assets and liabilities', 'Tap Assets, Liabilities or Total on the Accounts tab to see how much each month changed: bars above the line went up, bars below went down. Pick a month to see why, by account or by type. The last six months are free.']
-  ];
-  var N = FEAT.length;
-  var slides = $$('#stage .slide');
-  var cards = $$('#cards .card');
-  var dotsBox = $('#dots');
-  var title = $('#scrTitle');
-  var desc = $('#scrDesc');
-  var cur = 0, paused = reduce, hover = false;
-
-  var dots = FEAT.map(function (f, i) {
-    var b = document.createElement('button');
-    b.type = 'button';
-    b.setAttribute('aria-label', 'Show ' + f[0]);
-    b.appendChild(document.createElement('i'));
-    b.addEventListener('click', function () { go(i); });
-    dotsBox.appendChild(b);
-    return b;
-  });
-
-  function go(i) { paused = true; show(i); }
-
-  function show(i) {
-    cur = ((i % N) + N) % N;
-    slides.forEach(function (el, k) {
-      var off = k - cur;
-      if (off > N / 2) off -= N;
-      if (off < -N / 2) off += N;
-      var ab = Math.abs(off), vis = ab <= 2;
-      el.style.transform = 'translateX(' + off * 250 + 'px) scale(' + (1 - ab * 0.14) + ') rotateY(' + off * -8 + 'deg)';
-      el.style.zIndex = 10 - ab;
-      el.style.opacity = vis ? (ab === 0 ? 1 : ab === 1 ? 0.75 : 0.35) : 0;
-      el.style.filter = ab === 0 ? 'none' : 'saturate(.6)';
-      el.style.pointerEvents = vis ? 'auto' : 'none';
-      el.classList.toggle('show', vis);
-      el.classList.toggle('cur', off === 0);
-      el.setAttribute('aria-hidden', ab === 0 ? 'false' : 'true');
-      if (vis) { var img = el.querySelector('img'); if (img && img.loading === 'lazy') img.loading = 'eager'; }
-    });
-    cards.forEach(function (c, k) {
-      c.classList.toggle('on', k === cur);
-      if (k === cur) c.setAttribute('aria-current', 'true'); else c.removeAttribute('aria-current');
-    });
-    dots.forEach(function (d, k) { d.setAttribute('aria-current', k === cur ? 'true' : 'false'); });
-    title.textContent = FEAT[cur][0];
-    desc.textContent = FEAT[cur][1];
-  }
-
-  slides.forEach(function (el, k) { el.addEventListener('click', function () { if (k === cur) openLb(k); else go(k); }); });
-  cards.forEach(function (c, k) { c.addEventListener('click', function () { go(k); }); });
-  $('#prev').addEventListener('click', function () { go(cur - 1); });
-  $('#next').addEventListener('click', function () { go(cur + 1); });
-  var stage = $('#stage');
-  stage.addEventListener('mouseenter', function () { hover = true; });
-  stage.addEventListener('mouseleave', function () { hover = false; });
-  show(0);
+  /* ---------- Highlights gallery ---------- */
+  var galImgs = $$('#gal img');
+  var N = galImgs.length;
 
   /* ---------- Zoom view (lightbox) for screenshots ---------- */
   var lb = $('#lb'), lbImg = $('#lbImg'), lbPrev = $('#lbPrev'), lbNext = $('#lbNext'), lbCap = $('#lbCap');
@@ -90,9 +19,9 @@
     lbPrev.hidden = lbNext.hidden = i < 0;
   }
   function openLb(i) {
-    var img = $('img', slides[i]);
+    var img = galImgs[i];
     lbIdx = i; lbFrom = document.activeElement;
-    lbShow(i, img.currentSrc || img.src, FEAT[i][0]);
+    lbShow(i, img.currentSrc || img.src, img.alt);
     lbOpen();
   }
   function openLbImg(img) {
@@ -117,11 +46,10 @@
   function lbStep(d) {
     if (lbIdx < 0) return;
     lbIdx = ((lbIdx + d) % N + N) % N;
-    var img = $('img', slides[lbIdx]);
+    var img = galImgs[lbIdx];
     img.loading = 'eager';
     lbImg.classList.remove('swap'); void lbImg.offsetWidth; lbImg.classList.add('swap');
-    lbShow(lbIdx, img.currentSrc || img.src, FEAT[lbIdx][0]);
-    go(lbIdx);
+    lbShow(lbIdx, img.currentSrc || img.src, img.alt);
   }
   $('.lb-x', lb).addEventListener('click', lbClose);
   lbPrev.addEventListener('click', function () { lbStep(-1); });
@@ -138,9 +66,9 @@
     im.classList.add('zoomable');
     im.addEventListener('click', function () { openLbImg(im); });
   });
-  $$('#gal img').forEach(function (im) {
+  galImgs.forEach(function (im, k) {
     im.classList.add('zoomable');
-    im.addEventListener('click', function () { openLbImg(im); });
+    im.addEventListener('click', function () { openLb(k); });
   });
   var gal = $('#gal');
   function galStep(d) { gal.scrollBy({ left: d * 290, behavior: reduce ? 'auto' : 'smooth' }); }
@@ -153,8 +81,6 @@
     var dx = e.changedTouches[0].clientX - swipeX; swipeX = null;
     if (Math.abs(dx) > 60) lbStep(dx < 0 ? 1 : -1);
   }, { passive: true });
-
-  var timer = setInterval(function () { if (!paused && !hover) show(cur + 1); }, 3800);
 
   /* ---------- Hero tilt ---------- */
   var hero = $('#top'), tilt = $('#tilt');
