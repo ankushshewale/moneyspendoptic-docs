@@ -7,27 +7,30 @@
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   /* ---------- Highlights gallery ---------- */
-  var galImgs = $$('#gal img');
-  var N = galImgs.length;
+  var N = $$('#gal li').length;
 
-  /* ---------- Zoom view (lightbox) for screenshots ---------- */
+  /* ---------- Zoom view (lightbox): one picture, or every feature to swipe through ---------- */
   var lb = $('#lb'), lbImg = $('#lbImg'), lbPrev = $('#lbPrev'), lbNext = $('#lbNext'), lbCap = $('#lbCap');
-  var lbIdx = -1, lbFrom = null;
-  function lbShow(i, src, alt) {
-    lbImg.src = src; lbImg.alt = alt || '';
-    lbCap.textContent = alt || '';
-    lbPrev.hidden = lbNext.hidden = i < 0;
-  }
-  function openLb(i) {
-    var img = galImgs[i];
-    lbIdx = i; lbFrom = document.activeElement;
-    lbShow(i, img.currentSrc || img.src, img.alt);
-    lbOpen();
-  }
-  function openLbImg(img) {
-    lbIdx = -1; lbFrom = document.activeElement;
-    lbShow(-1, img.currentSrc || img.src, img.alt);
-    lbOpen();
+  var lbStage = $('.lb-stage', lb), lbTrack = $('#lbTrack'), lbCount = $('#lbCount');
+  var lbIdx = -1, lbFrom = null, lbBuilt = false, lbRaf = 0;
+  var galItems = $$('#gal li');
+
+  function lbBuild() {
+    if (lbBuilt) return;
+    lbBuilt = true;
+    galItems.forEach(function (li) {
+      var im = $('img', li), slide = document.createElement('div');
+      slide.className = 'lb-slide';
+      var big = document.createElement('img');
+      big.src = im.currentSrc || im.src; big.alt = im.alt; big.loading = 'lazy'; big.decoding = 'async';
+      var cap = document.createElement('div');
+      cap.className = 'lb-use';
+      var t = document.createElement('b'); t.textContent = $('h3', li).textContent;
+      var p = document.createElement('span'); p.textContent = $('p', li).textContent;
+      cap.appendChild(t); cap.appendChild(p);
+      slide.appendChild(big); slide.appendChild(cap);
+      lbTrack.appendChild(slide);
+    });
   }
   function lbOpen() {
     lb.hidden = false;
@@ -35,6 +38,31 @@
     lb.classList.add('open');
     document.documentElement.style.overflow = 'hidden';
     $('.lb-x', lb).focus();
+  }
+  function lbSync() {
+    var w = lbTrack.clientWidth || 1;
+    lbIdx = Math.max(0, Math.min(N - 1, Math.round(lbTrack.scrollLeft / w)));
+    lbCount.textContent = (lbIdx + 1) + ' / ' + N;
+    lbPrev.disabled = lbIdx === 0; lbNext.disabled = lbIdx === N - 1;
+  }
+  function openLb(i) {
+    lbBuild();
+    lbFrom = document.activeElement;
+    lbStage.hidden = true; lbTrack.hidden = false; lbCount.hidden = false;
+    lbPrev.hidden = lbNext.hidden = false;
+    lbOpen();
+    lbTrack.style.scrollBehavior = 'auto';
+    lbTrack.scrollLeft = i * lbTrack.clientWidth;
+    lbTrack.style.scrollBehavior = '';
+    lbSync();
+  }
+  function openLbImg(img) {
+    lbIdx = -1; lbFrom = document.activeElement;
+    lbStage.hidden = false; lbTrack.hidden = true; lbCount.hidden = true;
+    lbPrev.hidden = lbNext.hidden = true;
+    lbImg.src = img.currentSrc || img.src; lbImg.alt = img.alt || '';
+    lbCap.textContent = img.alt || '';
+    lbOpen();
   }
   function lbClose() {
     if (lb.hidden) return;
@@ -45,42 +73,43 @@
   }
   function lbStep(d) {
     if (lbIdx < 0) return;
-    lbIdx = ((lbIdx + d) % N + N) % N;
-    var img = galImgs[lbIdx];
-    img.loading = 'eager';
-    lbImg.classList.remove('swap'); void lbImg.offsetWidth; lbImg.classList.add('swap');
-    lbShow(lbIdx, img.currentSrc || img.src, img.alt);
+    lbTrack.scrollBy({ left: d * lbTrack.clientWidth, behavior: reduce ? 'auto' : 'smooth' });
   }
+  lbTrack.addEventListener('scroll', function () {
+    if (lbRaf) return;
+    lbRaf = requestAnimationFrame(function () { lbRaf = 0; lbSync(); });
+  }, { passive: true });
   $('.lb-x', lb).addEventListener('click', lbClose);
   lbPrev.addEventListener('click', function () { lbStep(-1); });
   lbNext.addEventListener('click', function () { lbStep(1); });
-  lb.addEventListener('click', function (e) { if (e.target === lb || e.target.classList.contains('lb-stage')) lbClose(); });
+  lb.addEventListener('click', function (e) {
+    if (e.target === lb || e.target.classList.contains('lb-stage') || e.target.classList.contains('lb-slide')) lbClose();
+  });
   document.addEventListener('keydown', function (e) {
     if (lb.hidden) return;
     if (e.key === 'Escape') lbClose();
     else if (e.key === 'ArrowLeft') lbStep(-1);
     else if (e.key === 'ArrowRight') lbStep(1);
-    else if (e.key === 'Tab') { e.preventDefault(); var b = [$('.lb-x', lb), lbPrev, lbNext].filter(function (x) { return !x.hidden; }); var k = b.indexOf(document.activeElement); b[(k + (e.shiftKey ? -1 : 1) + b.length) % b.length].focus(); }
+    else if (e.key === 'Tab') {
+      e.preventDefault();
+      var b = [$('.lb-x', lb), lbPrev, lbNext].filter(function (x) { return !x.hidden && !x.disabled; });
+      var k = b.indexOf(document.activeElement);
+      b[(k + (e.shiftKey ? b.length - 1 : 1)) % b.length].focus();
+    }
   });
   $$('.demo-phone .phone img, #deskView img').forEach(function (im) {
     im.classList.add('zoomable');
     im.addEventListener('click', function () { openLbImg(im); });
   });
-  galImgs.forEach(function (im, k) {
+  galItems.forEach(function (li, k) {
+    var im = $('img', li);
     im.classList.add('zoomable');
     im.addEventListener('click', function () { openLb(k); });
   });
   var gal = $('#gal');
-  function galStep(d) { gal.scrollBy({ left: d * 290, behavior: reduce ? 'auto' : 'smooth' }); }
+  function galStep(d) { gal.scrollBy({ left: d * 320, behavior: reduce ? 'auto' : 'smooth' }); }
   $('#galPrev').addEventListener('click', function () { galStep(-1); });
   $('#galNext').addEventListener('click', function () { galStep(1); });
-  var swipeX = null;
-  lb.addEventListener('touchstart', function (e) { swipeX = e.touches[0].clientX; }, { passive: true });
-  lb.addEventListener('touchend', function (e) {
-    if (swipeX === null) return;
-    var dx = e.changedTouches[0].clientX - swipeX; swipeX = null;
-    if (Math.abs(dx) > 60) lbStep(dx < 0 ? 1 : -1);
-  }, { passive: true });
 
   /* ---------- Hero tilt ---------- */
   var hero = $('#top'), tilt = $('#tilt');

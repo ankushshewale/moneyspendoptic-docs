@@ -28,7 +28,7 @@
 <link rel="preload" href="fonts/outfit-500.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="screens/01-transactions-daily.webp" as="image" type="image/webp" fetchpriority="high">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Money SpendOptic","applicationCategory":"FinanceApplication","operatingSystem":"Android","description":"A private money manager for Android: income, expenses and transfers, budgets, repeats and installments, search, Google Drive backup and a computer view.","inLanguage":["en","hi","mr"],"url":"https://www.moneyspendoptic.com/","image":"https://www.moneyspendoptic.com/logo.png","downloadUrl":"https://play.google.com/store/apps/details?id=com.moneyspendoptic","installUrl":"https://play.google.com/store/apps/details?id=com.moneyspendoptic","screenshot":["https://www.moneyspendoptic.com/screens/01-transactions-daily.webp","https://www.moneyspendoptic.com/screens/02-insights.webp","https://www.moneyspendoptic.com/screens/03-add-note-suggestions.webp","https://www.moneyspendoptic.com/screens/04-add-several.webp","https://www.moneyspendoptic.com/screens/05-tags.webp","https://www.moneyspendoptic.com/screens/06-repeat-installments.webp","https://www.moneyspendoptic.com/screens/07-budgets.webp","https://www.moneyspendoptic.com/screens/08-accounts.webp","https://www.moneyspendoptic.com/screens/09-search.webp","https://www.moneyspendoptic.com/screens/10-backup.webp","https://www.moneyspendoptic.com/screens/14-notes.webp","https://www.moneyspendoptic.com/screens/15-installments.webp","https://www.moneyspendoptic.com/screens/16-card-statement.webp","https://www.moneyspendoptic.com/screens/17-categories.webp","https://www.moneyspendoptic.com/screens/18-accounts-and-groups.webp","https://www.moneyspendoptic.com/screens/20-assets-liabilities.webp"],"offers":{"@type":"Offer","price":"0","priceCurrency":"INR"}}
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Money SpendOptic","applicationCategory":"FinanceApplication","operatingSystem":"Android","description":"A private money manager for Android: income, expenses and transfers, budgets, repeats and installments, search, Google Drive backup and a computer view.","inLanguage":["en","hi","mr"],"url":"https://www.moneyspendoptic.com/","image":"https://www.moneyspendoptic.com/logo.png","downloadUrl":"https://play.google.com/store/apps/details?id=com.moneyspendoptic","installUrl":"https://play.google.com/store/apps/details?id=com.moneyspendoptic","screenshot":["https://www.moneyspendoptic.com/features/01-daily-transactions.jpg","https://www.moneyspendoptic.com/features/02-insights.jpg","https://www.moneyspendoptic.com/features/03-smart-notes.jpg","https://www.moneyspendoptic.com/features/04-add-several.jpg","https://www.moneyspendoptic.com/features/04b-grouped-entries.jpg","https://www.moneyspendoptic.com/features/05-tags.jpg","https://www.moneyspendoptic.com/features/06-repeat.jpg","https://www.moneyspendoptic.com/features/07-installments.jpg","https://www.moneyspendoptic.com/features/08-budgets.jpg","https://www.moneyspendoptic.com/features/09-net-worth.jpg","https://www.moneyspendoptic.com/features/10-card-statements.jpg","https://www.moneyspendoptic.com/features/11-accounts-and-groups.jpg","https://www.moneyspendoptic.com/features/12-categories.jpg","https://www.moneyspendoptic.com/features/13-notes.jpg","https://www.moneyspendoptic.com/features/14-search-and-filters.jpg","https://www.moneyspendoptic.com/features/15-backup-and-privacy.jpg","https://www.moneyspendoptic.com/features/16-reminders.jpg","https://www.moneyspendoptic.com/features/17-assets-liabilities.jpg","https://www.moneyspendoptic.com/features/18-loans.jpg","https://www.moneyspendoptic.com/features/19-card-year.jpg"],"offers":{"@type":"Offer","price":"0","priceCurrency":"INR"}}
 </script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://www.moneyspendoptic.com/#org","name":"Money SpendOptic","url":"https://www.moneyspendoptic.com/","logo":"https://www.moneyspendoptic.com/logo.png","email":"moneyspendoptic@gmail.com"},{"@type":"WebSite","name":"Money SpendOptic","url":"https://www.moneyspendoptic.com/","publisher":{"@id":"https://www.moneyspendoptic.com/#org"}}]}
@@ -65,7 +65,6 @@ h1,h2,h3,p{margin:0}
 .wrap{max-width:1240px;margin:0 auto;padding-left:24px;padding-right:24px}
 section[id]{scroll-margin-top:72px}
 
-.slide.show.cur .phone{cursor:zoom-in}
 .zoomable{cursor:zoom-in}
 .lb{position:fixed;inset:0;z-index:100;background:rgba(11,11,11,.9);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .25s ease}
 .lb[hidden]{display:none}
@@ -82,6 +81,17 @@ section[id]{scroll-margin-top:72px}
 .lb-nav.prev{left:14px}
 .lb-nav.next{right:14px}
 .lb-nav[hidden]{display:none}
+.lb-track{position:absolute;inset:0;display:flex;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scrollbar-width:none;overscroll-behavior-x:contain;scroll-behavior:smooth}
+.lb-track::-webkit-scrollbar{display:none}
+.lb-track[hidden]{display:none}
+.lb-slide{flex:0 0 100%;scroll-snap-align:center;scroll-snap-stop:always;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;padding:64px 72px 28px;box-sizing:border-box}
+.lb-slide img{max-width:min(86vw,520px);max-height:calc(100vh - 250px);width:auto;height:auto;object-fit:contain;border-radius:22px;background:#fff;box-shadow:0 30px 80px rgba(0,0,0,.5)}
+.lb-use{display:flex;flex-direction:column;gap:6px;max-width:34em;text-align:center;color:#e8e8e8;font-size:16px;line-height:1.5}
+.lb-use b{font-size:22px;font-weight:500;color:#fff}
+.lb-count{position:absolute;top:24px;left:50%;transform:translateX(-50%);color:#e8e8e8;font-size:14px;letter-spacing:.12em}
+.lb-count[hidden],.lb-stage[hidden]{display:none}
+.lb-nav:disabled{opacity:.3;cursor:default}
+@media (max-width:700px){.lb-slide{padding:60px 16px 84px}.lb-slide img{max-height:calc(100vh - 290px)}}
 @media (max-width:700px){.lb-nav{top:auto;bottom:16px;margin:0}.lb-nav.prev{left:16px}.lb-nav.next{right:16px}.lb img{max-height:calc(100vh - 170px)}}
 /* motion */
 @keyframes rise{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
@@ -152,53 +162,29 @@ h1 span{font-weight:300}
 .facts span{font-size:15px;color:var(--text)}
 
 /* features */
-.features{padding-top:96px;padding-bottom:96px;display:flex;flex-direction:column;gap:44px}
 .sec-head{display:flex;flex-wrap:wrap;gap:24px;justify-content:space-between;align-items:end}
 .sec-head > div{display:flex;flex-direction:column;gap:14px}
 .label{font-size:12px;letter-spacing:.24em;color:var(--muted);text-transform:uppercase}
 h2{font-weight:500;letter-spacing:-.035em;font-size:clamp(42px,5.4vw,70px);line-height:1}
 .sec-note{max-width:24em;font-size:17px;line-height:1.6;color:var(--text)}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;list-style:none;margin:0;padding:0}
-.card{text-decoration:none;display:flex;flex-direction:column;gap:12px;padding:28px;border-radius:24px;min-height:190px;border:1px solid var(--line2);background:#fff;color:var(--ink);cursor:pointer;transition:transform .3s var(--ease),background .3s,color .3s,border-color .3s;height:100%}
-.card:hover{transform:translateY(-5px)}
-.card .ic{width:48px;height:48px;border-radius:14px;display:flex;align-items:center;justify-content:center;background:#F3F3F3;color:var(--ink);transition:background .3s}
-.card .ic .fill{display:none}
-.card.on .ic .fill{display:block}
-.card.on .ic .line{display:none}
-.card .t{font-size:20px;font-weight:500}
-.card .d{font-size:15px;line-height:1.6;color:var(--text);transition:color .3s}
-.card.on{background:var(--ink);color:#fff;border-color:var(--ink)}
-.card.on .ic{background:#fff}
-.card.on .d{color:#C8C8C8}
 
-/* carousel */
-.gallery{padding:96px 0 40px}
-.gal-wrap{position:relative;margin-top:40px}
-.gal{list-style:none;margin:0;padding:8px max(24px,calc((100vw - 1240px)/2 + 24px)) 24px;display:flex;gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-left:max(24px,calc((100vw - 1240px)/2 + 24px));scrollbar-width:none;-webkit-overflow-scrolling:touch}
+/* highlights gallery */
+.gallery{background:#F6F6F6;padding:104px 0 96px}
+.gallery .sec-head{margin-bottom:0}
+.gal-wrap{position:relative;margin-top:48px}
+.gal{list-style:none;margin:0;padding:8px max(24px,calc((100vw - 1240px)/2 + 24px)) 28px;display:flex;gap:28px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-left:max(24px,calc((100vw - 1240px)/2 + 24px));scrollbar-width:none;-webkit-overflow-scrolling:touch}
 .gal::-webkit-scrollbar{display:none}
-.gal li{flex:0 0 270px;scroll-snap-align:start}
-.gal img{width:270px;height:480px;border-radius:22px;box-shadow:0 24px 50px -30px rgba(0,0,0,.45);cursor:zoom-in;background:#F6F6F6}
+.gal li{flex:0 0 300px;scroll-snap-align:start;display:flex;flex-direction:column;gap:6px}
+.gal img{width:300px;height:533px;border-radius:24px;box-shadow:0 30px 60px -36px rgba(0,0,0,.5);cursor:zoom-in;background:#fff;margin-bottom:12px}
+.gal h3{font-size:19px;font-weight:500;letter-spacing:-.01em}
+.gal p{font-size:15px;line-height:1.55;color:var(--text);max-width:300px}
 .gal-ctrl{display:flex;justify-content:center;gap:14px;margin-top:8px}
-@media (max-width:700px){.gal li{flex-basis:78vw;max-width:300px}.gal img{width:100%;height:auto;aspect-ratio:9/16}.gal-ctrl{display:none}}
-.screens{background:#F6F6F6;padding:104px 0 96px}
-.screens .head{display:flex;flex-direction:column;gap:28px;align-items:center;text-align:center}
-.screens .head .label{opacity:.9}
-.screens .head p{max-width:34em;font-size:17px;line-height:1.6;color:var(--text)}
-.stage{position:relative;height:640px;margin-top:40px;overflow:hidden}
-.slide{position:absolute;left:50%;top:10px;margin-left:-140px;cursor:pointer;opacity:0;visibility:hidden;transition:transform .7s var(--ease),opacity .5s,filter .5s,visibility 0s .5s}
-.slide:first-child{opacity:1;visibility:visible}
-.slide.show{visibility:visible;transition:transform .7s var(--ease),opacity .5s,filter .5s,visibility 0s}
-.slide .phone{width:280px;height:584px;border-radius:46px;box-shadow:0 50px 90px -50px rgba(0,0,0,.7)}
-.slide img{pointer-events:none}
+@media (max-width:700px){.gallery{padding:72px 0 64px}.gal li{flex-basis:78vw;max-width:300px}.gal img{width:100%;height:auto;aspect-ratio:9/16}.gal-ctrl{display:none}}
 .ctrl{display:flex;gap:16px;align-items:center;justify-content:center;margin-top:16px;padding:0 16px}
 .arrow{flex:0 0 56px;width:56px;height:56px;padding:0;border-radius:50%;display:flex;align-items:center;justify-content:center;line-height:0;border:1.5px solid var(--ink);background:#fff;color:var(--ink);cursor:pointer;transition:transform .15s,background .25s}
 .arrow.solid{background:var(--ink);color:#fff}
 .arrow:hover{transform:scale(1.06)}
 .arrow:active{transform:scale(.96)}
-.dots{display:flex;flex-wrap:wrap;justify-content:center;gap:2px}
-.dots button{border:0;background:transparent;padding:0;margin:0;height:44px;min-width:22px;display:flex;align-items:center;justify-content:center;cursor:pointer}
-.dots i{display:block;height:8px;width:8px;border-radius:4px;background:#BDBDBD;transition:width .3s,background .3s}
-.dots button[aria-current="true"] i{width:28px;background:var(--ink)}
 
 /* computer view */
 .pc{padding-top:112px;padding-bottom:112px;display:flex;flex-direction:column;gap:44px}
@@ -363,26 +349,26 @@ footer .data{max-width:1240px;margin:0 auto 18px;font-size:13px;line-height:1.6;
 </div>
 <div class="gal-wrap">
 <ul class="gal" id="gal" tabindex="0" aria-label="Feature pictures">
-<li><img src="features/01-daily-transactions.jpg" width="270" height="480" alt="Daily transactions: every entry by day with the month's totals" loading="lazy" decoding="async"></li>
-<li><img src="features/02-insights.jpg" width="270" height="480" alt="Insights: spending by category for the month" loading="lazy" decoding="async"></li>
-<li><img src="features/03-smart-notes.jpg" width="270" height="480" alt="Smart notes: typing a note suggests matching past entries" loading="lazy" decoding="async"></li>
-<li><img src="features/04-add-several.jpg" width="270" height="480" alt="Add several: one account, many rows at once" loading="lazy" decoding="async"></li>
-<li><img src="features/04b-grouped-entries.jpg" width="270" height="480" alt="Grouped entries: entries saved together stay linked" loading="lazy" decoding="async"></li>
-<li><img src="features/05-tags.jpg" width="270" height="480" alt="Tags: label entries and filter by them" loading="lazy" decoding="async"></li>
-<li><img src="features/06-repeat.jpg" width="270" height="480" alt="Repeat: rules that add rent, salary and subscriptions" loading="lazy" decoding="async"></li>
-<li><img src="features/16-reminders.jpg" width="270" height="480" alt="Reminders: card bills, EMIs and low balance, only for the accounts you pick" loading="lazy" decoding="async"></li>
-<li><img src="features/07-installments.jpg" width="270" height="480" alt="Installments: a big buy split into parts, with how many are paid" loading="lazy" decoding="async"></li>
-<li><img src="features/18-loans.jpg" width="270" height="480" alt="Loans: what is left to pay, parts paid, the next EMI and the end of the loan" loading="lazy" decoding="async"></li>
-<li><img src="features/08-budgets.jpg" width="270" height="480" alt="Budgets: this month's limits per category" loading="lazy" decoding="async"></li>
-<li><img src="features/09-net-worth.jpg" width="270" height="480" alt="Net worth: assets and liabilities at a glance" loading="lazy" decoding="async"></li>
-<li><img src="features/17-assets-liabilities.jpg" width="270" height="480" alt="Assets and liabilities: how much each month changed, by account or by type" loading="lazy" decoding="async"></li>
-<li><img src="features/10-card-statements.jpg" width="270" height="480" alt="Card statements: used amount against the limit and the bill dates" loading="lazy" decoding="async"></li>
-<li><img src="features/19-card-year.jpg" width="270" height="480" alt="Card year: the card anniversary, the annual fee waiver tracker and each card year" loading="lazy" decoding="async"></li>
-<li><img src="features/11-accounts-and-groups.jpg" width="270" height="480" alt="Accounts and groups: add, hide and reorder accounts" loading="lazy" decoding="async"></li>
-<li><img src="features/12-categories.jpg" width="270" height="480" alt="Categories: main categories with subcategories" loading="lazy" decoding="async"></li>
-<li><img src="features/13-notes.jpg" width="270" height="480" alt="Notes: coloured memos for days, with pinned notes" loading="lazy" decoding="async"></li>
-<li><img src="features/14-search-and-filters.jpg" width="270" height="480" alt="Search and filters: find entries by note, amount or filter" loading="lazy" decoding="async"></li>
-<li><img src="features/15-backup-and-privacy.jpg" width="270" height="480" alt="Backup and privacy: your data stays yours, backup to Google Drive" loading="lazy" decoding="async"></li>
+<li><img src="features/01-daily-transactions.jpg" width="300" height="533" alt="Daily transactions: Every entry by day, with the month's income, expense and total on top." loading="lazy" decoding="async"><h3>Daily transactions</h3><p>Every entry by day, with the month's income, expense and total on top.</p></li>
+<li><img src="features/02-insights.jpg" width="300" height="533" alt="Insights: Spending by category or month bars, a six-month trend and a compare with last month." loading="lazy" decoding="async"><h3>Insights</h3><p>Spending by category or month bars, a six-month trend and a compare with last month.</p></li>
+<li><img src="features/03-smart-notes.jpg" width="300" height="533" alt="Notes that fill themselves: Start typing a note and pick a past entry - category and account fill in for you." loading="lazy" decoding="async"><h3>Notes that fill themselves</h3><p>Start typing a note and pick a past entry - category and account fill in for you.</p></li>
+<li><img src="features/04-add-several.jpg" width="300" height="533" alt="Add several: One account, many rows: enter a whole bill or a trip in one go." loading="lazy" decoding="async"><h3>Add several</h3><p>One account, many rows: enter a whole bill or a trip in one go.</p></li>
+<li><img src="features/04b-grouped-entries.jpg" width="300" height="533" alt="Grouped entries: Entries saved together stay linked: tap to see the others and open one." loading="lazy" decoding="async"><h3>Grouped entries</h3><p>Entries saved together stay linked: tap to see the others and open one.</p></li>
+<li><img src="features/05-tags.jpg" width="300" height="533" alt="Tags: Tag entries across categories - a trip, a person, a project - and find them again." loading="lazy" decoding="async"><h3>Tags</h3><p>Tag entries across categories - a trip, a person, a project - and find them again.</p></li>
+<li><img src="features/06-repeat.jpg" width="300" height="533" alt="Repeat: Rent, subscriptions and salary add themselves on schedule, and you see what is coming up next." loading="lazy" decoding="async"><h3>Repeat</h3><p>Rent, subscriptions and salary add themselves on schedule, and you see what is coming up next.</p></li>
+<li><img src="features/16-reminders.jpg" width="300" height="533" alt="Reminders: Card bills, EMIs and low balance, only for the accounts you pick." loading="lazy" decoding="async"><h3>Reminders</h3><p>Card bills, EMIs and low balance, only for the accounts you pick.</p></li>
+<li><img src="features/07-installments.jpg" width="300" height="533" alt="Installments: Split a big buy into parts: see how many are paid and when the next one is due." loading="lazy" decoding="async"><h3>Installments</h3><p>Split a big buy into parts: see how many are paid and when the next one is due.</p></li>
+<li><img src="features/18-loans.jpg" width="300" height="533" alt="Loans: See what is left to pay, the parts paid, the next EMI and when the loan ends." loading="lazy" decoding="async"><h3>Loans</h3><p>See what is left to pay, the parts paid, the next EMI and when the loan ends.</p></li>
+<li><img src="features/08-budgets.jpg" width="300" height="533" alt="Budgets: A limit per category with clear over and under bars." loading="lazy" decoding="async"><h3>Budgets</h3><p>A limit per category with clear over and under bars.</p></li>
+<li><img src="features/09-net-worth.jpg" width="300" height="533" alt="Net worth: Your assets and liabilities, and the total, at a glance." loading="lazy" decoding="async"><h3>Net worth</h3><p>Your assets and liabilities, and the total, at a glance.</p></li>
+<li><img src="features/17-assets-liabilities.jpg" width="300" height="533" alt="Assets and liabilities: How much each month changed, by account or by type. The last six months are free." loading="lazy" decoding="async"><h3>Assets and liabilities</h3><p>How much each month changed, by account or by type. The last six months are free.</p></li>
+<li><img src="features/10-card-statements.jpg" width="300" height="533" alt="Card statements: What you owe against the limit, every statement billed and unpaid, and a Mark paid button." loading="lazy" decoding="async"><h3>Card statements</h3><p>What you owe against the limit, every statement billed and unpaid, and a Mark paid button.</p></li>
+<li><img src="features/19-card-year.jpg" width="300" height="533" alt="Card year: Set the card anniversary and see your spend against the annual fee waiver." loading="lazy" decoding="async"><h3>Card year</h3><p>Set the card anniversary and see your spend against the annual fee waiver.</p></li>
+<li><img src="features/11-accounts-and-groups.jpg" width="300" height="533" alt="Accounts and groups: Cash, bank, cards and more in groups: add, hide, reorder and edit." loading="lazy" decoding="async"><h3>Accounts and groups</h3><p>Cash, bank, cards and more in groups: add, hide, reorder and edit.</p></li>
+<li><img src="features/12-categories.jpg" width="300" height="533" alt="Categories: Categories with subcategories for expense and income, each with an icon, and your own to add." loading="lazy" decoding="async"><h3>Categories</h3><p>Categories with subcategories for expense and income, each with an icon, and your own to add.</p></li>
+<li><img src="features/13-notes.jpg" width="300" height="533" alt="Notes: Coloured memos for days, with pinned notes." loading="lazy" decoding="async"><h3>Notes</h3><p>Coloured memos for days, with pinned notes.</p></li>
+<li><img src="features/14-search-and-filters.jpg" width="300" height="533" alt="Search and filters: Search notes and descriptions. Filter by type, account, category, amount and period." loading="lazy" decoding="async"><h3>Search and filters</h3><p>Search notes and descriptions. Filter by type, account, category, amount and period.</p></li>
+<li><img src="features/15-backup-and-privacy.jpg" width="300" height="533" alt="Backup and privacy: Backup file, your own Google Drive and Excel import. Data stays on your phone." loading="lazy" decoding="async"><h3>Backup and privacy</h3><p>Backup file, your own Google Drive and Excel import. Data stays on your phone.</p></li>
 </ul>
 <div class="ctrl gal-ctrl">
 <button type="button" class="arrow btn" id="galPrev" aria-label="Previous pictures"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
@@ -480,11 +466,13 @@ footer .data{max-width:1240px;margin:0 auto 18px;font-size:13px;line-height:1.6;
 </div>
 </footer>
 
-<div class="lb" id="lb" hidden role="dialog" aria-modal="true" aria-label="Screen preview">
+<div class="lb" id="lb" hidden role="dialog" aria-modal="true" aria-label="Feature preview">
 <button type="button" class="lb-x" aria-label="Close preview"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
-<button type="button" class="lb-nav prev" id="lbPrev" aria-label="Previous screen"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
-<div class="lb-stage"><img id="lbImg" alt=""><div class="lb-cap" id="lbCap"></div></div>
-<button type="button" class="lb-nav next" id="lbNext" aria-label="Next screen"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+<button type="button" class="lb-nav prev" id="lbPrev" aria-label="Previous feature"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+<div class="lb-count" id="lbCount" hidden>1 / 20</div>
+<div class="lb-track" id="lbTrack" hidden></div>
+<div class="lb-stage" hidden><img id="lbImg" alt=""><div class="lb-cap" id="lbCap"></div></div>
+<button type="button" class="lb-nav next" id="lbNext" aria-label="Next feature"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
 </div>
 
 <script src="site.js" defer></script>
