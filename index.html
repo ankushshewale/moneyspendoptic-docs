@@ -172,6 +172,14 @@ h2{font-weight:500;letter-spacing:-.035em;font-size:clamp(42px,5.4vw,70px);line-
 .card.on .d{color:#C8C8C8}
 
 /* carousel */
+.gallery{padding:96px 0 40px}
+.gal-wrap{position:relative;margin-top:40px}
+.gal{list-style:none;margin:0;padding:8px max(24px,calc((100vw - 1240px)/2 + 24px)) 24px;display:flex;gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-left:max(24px,calc((100vw - 1240px)/2 + 24px));scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.gal::-webkit-scrollbar{display:none}
+.gal li{flex:0 0 270px;scroll-snap-align:start}
+.gal img{width:270px;height:480px;border-radius:22px;box-shadow:0 24px 50px -30px rgba(0,0,0,.45);cursor:zoom-in;background:#F6F6F6}
+.gal-ctrl{display:flex;justify-content:center;gap:14px;margin-top:8px}
+@media (max-width:700px){.gal li{flex-basis:78vw;max-width:300px}.gal img{width:100%;height:auto;aspect-ratio:9/16}.gal-ctrl{display:none}}
 .screens{background:#F6F6F6;padding:104px 0 96px}
 .screens .head{display:flex;flex-direction:column;gap:28px;align-items:center;text-align:center}
 .screens .head .label{opacity:.9}
@@ -373,6 +381,37 @@ footer .data{max-width:1240px;margin:0 auto 18px;font-size:13px;line-height:1.6;
 <li><a href="#screens" class="card" data-i="15"><span class="ic"><svg class="line" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M6 17V11a6 6 0 0112 0v6l1.5 2h-15z"/><path d="M10 21h4"/></svg><svg class="fill" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true"><path d="M5.5 18.5L7 16.5V11a5 5 0 0110 0v5.5l1.5 2z"/><path d="M9.5 20.5h5a2.5 2.5 0 01-5 0z"/></svg></span><span class="t">Reminders</span><span class="d">A bell on the Trans tab lists what needs a look: card bills, overdue bills, loan EMIs, budgets and accounts that may run short for the payments coming. Switch on only the reminders you want, account by account.</span></a></li>
 <li><a href="#screens" class="card" data-i="16"><span class="ic"><svg class="line" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 20h16"/><rect x="5" y="12" width="3.5" height="5" rx=".6"/><rect x="10.25" y="7" width="3.5" height="7" rx=".6"/><rect x="15.5" y="4" width="3.5" height="6" rx=".6"/></svg><svg class="fill" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true"><path d="M3.5 19.5h17V21h-17z"/><rect x="5" y="12" width="3.5" height="5.5" rx=".8"/><rect x="10.25" y="7" width="3.5" height="7.5" rx=".8"/><rect x="15.5" y="4" width="3.5" height="6.5" rx=".8"/></svg></span><span class="t">Assets and liabilities</span><span class="d">Tap Assets, Liabilities or Total on the Accounts tab to see how much each month changed: bars above the line went up, bars below went down. Pick a month to see why, by account or by type. The last six months are free.</span></a></li>
 </ul>
+</section>
+
+<section id="gallery" class="gallery" aria-labelledby="galTitle">
+<div class="wrap sec-head">
+<div><div class="label">Highlights</div><h2 id="galTitle">See what each feature does.</h2></div>
+<p class="sec-note">One picture per feature. Swipe, or tap a picture to enlarge it.</p>
+</div>
+<div class="gal-wrap">
+<ul class="gal" id="gal" tabindex="0" aria-label="Feature pictures">
+<li><img src="features/01-daily-transactions.jpg" width="270" height="480" alt="Daily transactions: every entry by day with the month's totals" loading="lazy" decoding="async"></li>
+<li><img src="features/02-insights.jpg" width="270" height="480" alt="Insights: spending by category for the month" loading="lazy" decoding="async"></li>
+<li><img src="features/03-smart-notes.jpg" width="270" height="480" alt="Smart notes: typing a note suggests matching past entries" loading="lazy" decoding="async"></li>
+<li><img src="features/04-add-several.jpg" width="270" height="480" alt="Add several: one account, many rows at once" loading="lazy" decoding="async"></li>
+<li><img src="features/04b-grouped-entries.jpg" width="270" height="480" alt="Grouped entries: entries saved together stay linked" loading="lazy" decoding="async"></li>
+<li><img src="features/05-tags.jpg" width="270" height="480" alt="Tags: label entries and filter by them" loading="lazy" decoding="async"></li>
+<li><img src="features/06-repeat.jpg" width="270" height="480" alt="Repeat: rules that add rent, salary and subscriptions" loading="lazy" decoding="async"></li>
+<li><img src="features/07-installments.jpg" width="270" height="480" alt="Installments: a big buy split into parts, with how many are paid" loading="lazy" decoding="async"></li>
+<li><img src="features/08-budgets.jpg" width="270" height="480" alt="Budgets: this month's limits per category" loading="lazy" decoding="async"></li>
+<li><img src="features/09-net-worth.jpg" width="270" height="480" alt="Net worth: assets and liabilities at a glance" loading="lazy" decoding="async"></li>
+<li><img src="features/10-card-statements.jpg" width="270" height="480" alt="Card statements: used amount against the limit and the bill dates" loading="lazy" decoding="async"></li>
+<li><img src="features/11-accounts-and-groups.jpg" width="270" height="480" alt="Accounts and groups: add, hide and reorder accounts" loading="lazy" decoding="async"></li>
+<li><img src="features/12-categories.jpg" width="270" height="480" alt="Categories: main categories with subcategories" loading="lazy" decoding="async"></li>
+<li><img src="features/13-notes.jpg" width="270" height="480" alt="Notes: coloured memos for days, with pinned notes" loading="lazy" decoding="async"></li>
+<li><img src="features/14-search-and-filters.jpg" width="270" height="480" alt="Search and filters: find entries by note, amount or filter" loading="lazy" decoding="async"></li>
+<li><img src="features/15-backup-and-privacy.jpg" width="270" height="480" alt="Backup and privacy: your data stays yours, backup to Google Drive" loading="lazy" decoding="async"></li>
+</ul>
+<div class="ctrl gal-ctrl">
+<button type="button" class="arrow btn" id="galPrev" aria-label="Previous pictures"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+<button type="button" class="arrow solid btn" id="galNext" aria-label="Next pictures"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+</div>
+</div>
 </section>
 
 <section id="screens" class="screens" aria-labelledby="scrTitle">

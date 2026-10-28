@@ -138,6 +138,14 @@
     im.classList.add('zoomable');
     im.addEventListener('click', function () { openLbImg(im); });
   });
+  $$('#gal img').forEach(function (im) {
+    im.classList.add('zoomable');
+    im.addEventListener('click', function () { openLbImg(im); });
+  });
+  var gal = $('#gal');
+  function galStep(d) { gal.scrollBy({ left: d * 290, behavior: reduce ? 'auto' : 'smooth' }); }
+  $('#galPrev').addEventListener('click', function () { galStep(-1); });
+  $('#galNext').addEventListener('click', function () { galStep(1); });
   var swipeX = null;
   lb.addEventListener('touchstart', function (e) { swipeX = e.touches[0].clientX; }, { passive: true });
   lb.addEventListener('touchend', function (e) {
