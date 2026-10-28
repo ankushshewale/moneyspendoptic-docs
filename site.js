@@ -23,7 +23,8 @@
     ['Notes', 'Memos for any day, like a shopping list or a trip plan, as coloured notes you can pin.'],
     ['Search and filters', 'Search notes and descriptions, with results under day headings and their notes; filter by type, account, category, amount and period.'],
     ['Backup and privacy', 'Backup file, your own Google Drive, Excel import - your data stays yours.'],
-    ['Reminders', 'A bell on the Trans tab lists what needs a look: card bills, overdue bills, loan EMIs, budgets and accounts that may run short for the payments coming. Switch on only the reminders you want, account by account.']
+    ['Reminders', 'A bell on the Trans tab lists what needs a look: card bills, overdue bills, loan EMIs, budgets and accounts that may run short for the payments coming. Switch on only the reminders you want, account by account.'],
+    ['Assets and liabilities', 'Tap Assets, Liabilities or Total on the Accounts tab to see every month as a bar from its opening to its closing balance, whether it went up or down, and what moved it by account or by type. The last six months are free.']
   ];
   var N = FEAT.length;
   var slides = $$('#stage .slide');
