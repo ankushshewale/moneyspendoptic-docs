@@ -3,7 +3,7 @@
    "Cookie settings" in the footer shows the banner again. Plain JS, no framework. */
 (function () {
   'use strict';
-  var GA_ID = 'G-HXTBZX5WKX';
+  var GA_ID = 'G-LKC85CYK5L';
   var KEY = 'mso-analytics';
   // Count only the live site, not local previews.
   var live = /(^|\.)moneyspendoptic\.com$/.test(location.hostname);
