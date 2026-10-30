@@ -102,7 +102,7 @@ footer .links a{min-height:44px;display:inline-flex;align-items:center}
 
 <main>
 <section class="wrap phead">
-<div class="badge rise"><i></i>Last updated: 29 October 2026</div>
+<div class="badge rise"><i></i>Last updated: 30 October 2026</div>
 <h1 class="rise-2">Privacy <span>policy</span></h1>
 <p class="lead rise-2">Money SpendOptic is a money-manager app for Android. This page explains what the app does with your data. The short version: your money data stays on your phone, and we do not run a server that collects it.</p>
 </section>
@@ -196,7 +196,10 @@ the app shares nothing with third parties.</p>
 delete transactions in the app, clear the app's storage, uninstall it, or delete the backup file from your Drive.</p>
 
 <h2 id="this-website-and-fonts">This website and fonts</h2>
-<p>This website sets no cookies, has no analytics and loads no third-party scripts or fonts. The only script on the page runs the carousel and the computer-view demo in your browser; it sends nothing anywhere.
+<p>This website uses Google Analytics to count visits: which pages are opened, roughly where visitors come from (country, the site that linked here) and the kind of device and browser.
+It runs only if you tap Accept on the cookie banner; if you decline or do nothing, no analytics script loads and no cookies are set. Google Analytics then sets its own cookies (named <code>_ga</code>) and Google processes the data under its privacy policy (<a href="https://policies.google.com/privacy">policies.google.com/privacy</a>).
+We keep the data for 2 months, do not use Google signals or ads features, and never link it to the app. You can change your choice at any time with Cookie settings at the bottom of each page.
+Your choice itself is kept only in your browser. The site's other script runs the carousel and the computer-view demo in your browser and sends nothing anywhere. No third-party fonts are loaded.
 The Outfit font, also used in the app, is served from this site under the SIL Open Font License (licence text: <a href="fonts/OFL.txt">fonts/OFL.txt</a>).
 The icons in the app are Material Symbols by Google, under the Apache License 2.0.</p>
 <p>The computer page draws its QR code with qrcode-generator by Kazuhiko Arase (Copyright (c) 2009), under the MIT licence:
@@ -215,7 +218,7 @@ The software is provided "as is", without warranty of any kind. The word "QR Cod
 <footer class="foot">
 <div class="row">
 <div class="own"><img src="logo-mark.png" alt="" width="28" height="28">© 2026 Money SpendOptic</div>
-<div class="links"><a href="privacy.html">Privacy policy</a></div>
+<div class="links"><a href="privacy.html">Privacy policy</a><a href="#" data-cookie-settings>Cookie settings</a></div>
 </div>
 </footer>
 
@@ -227,5 +230,6 @@ The software is provided "as is", without warranty of any kind. The word "QR Cod
   hs.forEach(function(h){h&&io.observe(h)});
 })();
 </script>
+<script src="consent.js" defer></script>
 </body>
 </html>
