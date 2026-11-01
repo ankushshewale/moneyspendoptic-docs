@@ -111,6 +111,15 @@
   $('#galPrev').addEventListener('click', function () { galStep(-1); });
   $('#galNext').addEventListener('click', function () { galStep(1); });
 
+  /* computer view pictures: arrows, and tap to enlarge */
+  var pcg = $('#pcgal');
+  if (pcg) {
+    $$('img', pcg).forEach(function (im) { im.classList.add('zoomable'); im.addEventListener('click', function () { openLbImg(im); }); });
+    var pcgStep = function (d) { pcg.scrollBy({ left: d * 600, behavior: reduce ? 'auto' : 'smooth' }); };
+    $('#pcgPrev').addEventListener('click', function () { pcgStep(-1); });
+    $('#pcgNext').addEventListener('click', function () { pcgStep(1); });
+  }
+
   /* ---------- Hero tilt ---------- */
   var hero = $('#top'), tilt = $('#tilt');
   if (!reduce && tilt) {

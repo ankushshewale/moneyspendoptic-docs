@@ -186,6 +186,14 @@ h2{font-weight:500;letter-spacing:-.035em;font-size:clamp(42px,5.4vw,70px);line-
 .arrow:hover{transform:scale(1.06)}
 .arrow:active{transform:scale(.96)}
 
+/* computer view gallery */
+.pcgal{display:flex;flex-direction:column;gap:20px;margin:0 -24px}
+.pcgal .sec-head{padding:0 24px}
+.pcg{padding-top:8px}
+.pcg li{flex-basis:560px}
+.pcg img{width:560px;height:394px;border-radius:14px;object-fit:cover;object-position:top left;border:1px solid #E6E6E6;box-shadow:0 30px 60px -36px rgba(0,0,0,.4)}
+.pcg p{max-width:560px}
+@media (max-width:700px){.pcg li{flex-basis:84vw;max-width:none}.pcg img{width:100%;height:auto;aspect-ratio:1280/900}.pcg p{max-width:none}.pcgal .gal-ctrl{display:none}}
 /* computer view */
 .pc{padding-top:112px;padding-bottom:112px;display:flex;flex-direction:column;gap:44px}
 .pc .intro{display:flex;flex-direction:column;gap:14px;max-width:720px}
@@ -434,6 +442,25 @@ footer .data{max-width:1240px;margin:0 auto 18px;font-size:13px;line-height:1.6;
 <li><span class="n" aria-hidden="true">2</span><span class="tt"><b>Open the address</b><span>Type it into any browser on the same Wi-Fi, then scan the QR code with your phone or type the code.</span></span></li>
 <li><span class="n" aria-hidden="true">3</span><span class="tt"><b>Quit when you're done</b><span>The page stops working. Nothing was uploaded.</span></span></li>
 </ol>
+
+<div class="pcgal" aria-labelledby="pcgTitle">
+<div class="sec-head"><div><div class="label">On the big screen</div><h2 class="pc-h" id="pcgTitle">What the computer view shows.</h2></div>
+<p class="sec-note">Eight pages from the computer view. Swipe, or tap a picture to enlarge it.</p></div>
+<ul class="gal pcg" id="pcgal" tabindex="0" aria-label="Computer view pictures">
+<li><img src="screens/pc-transactions.webp" width="560" height="394" alt="The computer page, Transactions: entries by day with the month's income, expense and total, upcoming payments and notes." loading="lazy" decoding="async"><h3>Transactions</h3><p>Every entry by day, with income, expense and total on top, upcoming payments and your notes beside it.</p></li>
+<li><img src="screens/pc-accounts.webp" width="560" height="394" alt="The computer page, Accounts: groups with balances and card limits, and the chosen account's page beside the list." loading="lazy" decoding="async"><h3>Accounts</h3><p>All your accounts in groups with balances and card limits, and the chosen account's page beside the list.</p></li>
+<li><img src="screens/pc-account.webp" width="560" height="394" alt="The computer page, one account: balance card, upcoming payments and entries by day, with Repeat and installments." loading="lazy" decoding="async"><h3>Account page</h3><p>Daily, Monthly, Yearly and Details for one account, with upcoming payments and a Repeat and installments button.</p></li>
+<li><img src="screens/pc-insights.webp" width="560" height="394" alt="The computer page, Insights: spending by category as a ring and a list, with budgets." loading="lazy" decoding="async"><h3>Insights</h3><p>Spending by category against your budgets, with tags, month bars and a trend.</p></li>
+<li><img src="screens/pc-reminders.webp" width="560" height="394" alt="The computer page with the Reminders bell open: Reminders and Payments, with View, Snooze and Dismiss." loading="lazy" decoding="async"><h3>Reminders</h3><p>The same bell as on your phone: card bills, EMIs and low balance, with View, Snooze and Dismiss.</p></li>
+<li><img src="screens/pc-add-several.webp" width="560" height="394" alt="The computer page, Add several: rows for amount, category and note, with a Save entries button." loading="lazy" decoding="async"><h3>Add several</h3><p>Type many entries in one go on a big screen, then save them together.</p></li>
+<li><img src="screens/pc-search.webp" width="560" height="394" alt="The computer page, Search: results for a word across months, with the number found and totals." loading="lazy" decoding="async"><h3>Search</h3><p>Search notes and descriptions across every month, with the total found.</p></li>
+<li><img src="screens/pc-manage.webp" width="560" height="394" alt="The computer page, Manage: a menu of categories, tags, accounts, budgets, repeats and settings, with the category list." loading="lazy" decoding="async"><h3>Manage</h3><p>Categories, tags, accounts and groups, budgets, repeats, notes, backup and settings.</p></li>
+</ul>
+<div class="ctrl gal-ctrl">
+<button type="button" class="arrow btn" id="pcgPrev" aria-label="Previous pictures"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+<button type="button" class="arrow solid btn" id="pcgNext" aria-label="Next pictures"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+</div>
+</div>
 
 <div class="faq-row">
 <div class="faq-l">
