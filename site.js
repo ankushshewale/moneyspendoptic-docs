@@ -9,16 +9,18 @@
   /* ---------- Highlights gallery ---------- */
   var N = $$('#gal li').length;
 
-  /* ---------- Zoom view (lightbox): one picture, or every feature to swipe through ---------- */
+  /* ---------- Zoom view (lightbox): one picture, or every picture of a row to swipe through ---------- */
   var lb = $('#lb'), lbImg = $('#lbImg'), lbPrev = $('#lbPrev'), lbNext = $('#lbNext'), lbCap = $('#lbCap');
   var lbStage = $('.lb-stage', lb), lbTrack = $('#lbTrack'), lbCount = $('#lbCount');
-  var lbIdx = -1, lbFrom = null, lbBuilt = false, lbRaf = 0;
-  var galItems = $$('#gal li');
+  var lbIdx = -1, lbFrom = null, lbSet = null, lbRaf = 0;
+  var galItems = $$('#gal li'), pcgItems = $$('#pcgal li');
 
-  function lbBuild() {
-    if (lbBuilt) return;
-    lbBuilt = true;
-    galItems.forEach(function (li) {
+  /* Fill the track with the slides of one row (the phone features or the computer pages); it is rebuilt only when the row changes. */
+  function lbBuild(items) {
+    if (lbSet === items) return;
+    lbSet = items; N = items.length;
+    lbTrack.textContent = '';
+    items.forEach(function (li) {
       var im = $('img', li), slide = document.createElement('div');
       slide.className = 'lb-slide';
       var big = document.createElement('img');
@@ -45,8 +47,8 @@
     lbCount.textContent = (lbIdx + 1) + ' / ' + N;
     lbPrev.disabled = lbIdx === 0; lbNext.disabled = lbIdx === N - 1;
   }
-  function openLb(i) {
-    lbBuild();
+  function openLb(i, items) {
+    lbBuild(items || galItems);
     lbFrom = document.activeElement;
     lbStage.hidden = true; lbTrack.hidden = false; lbCount.hidden = false;
     lbPrev.hidden = lbNext.hidden = false;
@@ -104,7 +106,7 @@
   galItems.forEach(function (li, k) {
     var im = $('img', li);
     im.classList.add('zoomable');
-    im.addEventListener('click', function () { openLb(k); });
+    im.addEventListener('click', function () { openLb(k, galItems); });
   });
   var gal = $('#gal');
   function galStep(d) { gal.scrollBy({ left: d * 320, behavior: reduce ? 'auto' : 'smooth' }); }
@@ -114,7 +116,7 @@
   /* computer view pictures: arrows, and tap to enlarge */
   var pcg = $('#pcgal');
   if (pcg) {
-    $$('img', pcg).forEach(function (im) { im.classList.add('zoomable'); im.addEventListener('click', function () { openLbImg(im); }); });
+    pcgItems.forEach(function (li, k) { var im = $('img', li); im.classList.add('zoomable'); im.addEventListener('click', function () { openLb(k, pcgItems); }); });
     var pcgStep = function (d) { pcg.scrollBy({ left: d * 600, behavior: reduce ? 'auto' : 'smooth' }); };
     $('#pcgPrev').addEventListener('click', function () { pcgStep(-1); });
     $('#pcgNext').addEventListener('click', function () { pcgStep(1); });
