@@ -22,7 +22,7 @@
     lbTrack.textContent = '';
     items.forEach(function (li) {
       var im = $('img', li), slide = document.createElement('div');
-      slide.className = 'lb-slide';
+      slide.className = 'lb-slide' + (li.closest('#pcgal') ? ' wide' : '');
       var big = document.createElement('img');
       big.src = im.currentSrc || im.src; big.alt = im.alt; big.loading = 'lazy'; big.decoding = 'async';
       var cap = document.createElement('div');
