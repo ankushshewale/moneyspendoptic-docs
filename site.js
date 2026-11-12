@@ -144,15 +144,15 @@
     });
   }
   if (!reduce && nums.length) {
-    nums.forEach(function (b) { b.textContent = '0'; });
     var facts = $('.facts');
     if ('IntersectionObserver' in window && facts) {
       // start when the numbers scroll into view, so the visitor sees them count
       var seen = new IntersectionObserver(function (es) {
-        if (es[0].isIntersecting) { seen.disconnect(); countUp(); }
+        if (es[0].isIntersecting) { seen.disconnect(); nums.forEach(function (b) { b.textContent = '0'; }); countUp(); }
       }, { threshold: 0.35 });
       seen.observe(facts);
-    } else countUp();
+    }
+    /* no observer: leave the real numbers from the HTML as they are */
   }
 
   /* ---------- Questions: one open at a time ---------- */
